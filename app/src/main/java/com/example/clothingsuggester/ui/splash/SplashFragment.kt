@@ -1,4 +1,4 @@
-package com.example.clothingsuggester.ui
+package com.example.clothingsuggester.ui.splash
 
 import android.os.Bundle
 import android.view.LayoutInflater

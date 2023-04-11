@@ -9,7 +9,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragment_container_view_main_activity"
-        android:name="com.example.clothingsuggester.ui.SplashFragment"
+        android:name="com.example.clothingsuggester.ui.splash.SplashFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@layout/fragment_splash" />
