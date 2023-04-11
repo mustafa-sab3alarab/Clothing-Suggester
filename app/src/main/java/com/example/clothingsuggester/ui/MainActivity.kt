@@ -2,7 +2,6 @@ package com.example.clothingsuggester.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.clothingsuggester.R
 import com.example.clothingsuggester.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
