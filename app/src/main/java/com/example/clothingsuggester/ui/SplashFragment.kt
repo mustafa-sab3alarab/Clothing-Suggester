@@ -4,17 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.example.clothingsuggester.R
+import com.example.clothingsuggester.databinding.FragmentSplashBinding
+import com.example.clothingsuggester.ui.base.BaseFragment
 
 
-class SplashFragment : Fragment() {
+class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_splash, container, false)
+    override val LOG_TAG: String
+        get() = this::class.java.simpleName
+
+    override val bindingInflater: (LayoutInflater, ViewGroup, Boolean) -> FragmentSplashBinding
+        get() = FragmentSplashBinding::inflate
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        log("on View Created")
     }
+
+
 }

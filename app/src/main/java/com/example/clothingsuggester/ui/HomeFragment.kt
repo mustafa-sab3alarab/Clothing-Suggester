@@ -4,17 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.example.clothingsuggester.R
+import com.example.clothingsuggester.databinding.FragmentHomeBinding
+import com.example.clothingsuggester.ui.base.BaseFragment
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    override val LOG_TAG: String
+        get() = this::class.java.simpleName
+
+    override val bindingInflater: (LayoutInflater, ViewGroup, Boolean) -> FragmentHomeBinding
+        get() = FragmentHomeBinding::inflate
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        log("on View Created")
     }
+
 }
