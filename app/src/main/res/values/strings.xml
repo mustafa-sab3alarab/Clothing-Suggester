@@ -2,9 +2,9 @@
         <string name="app_name">Clothing Suggester</string>
         <string name="get_dressed">Get Dressed</string>
         <string name="suggestion_for_you">Suggestion for you</string>
-        <string name="rain">RAINFALL</string>
-        <string name="humidity">HUMIDITY</string>
-        <string name="wind">WIND</string>
+        <string name="rain">Rainfall</string>
+        <string name="humidity">Humidity</string>
+        <string name="wind">Wind</string>
         <string name="grant_permission">Grant Permission</string>
         <string name="requires_location">This app requires location permission.</string>
         <string name="location_permission">Location Permission Required</string>
