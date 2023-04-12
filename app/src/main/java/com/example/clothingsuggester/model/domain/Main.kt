@@ -2,14 +2,15 @@ package com.example.clothingsuggester.model.domain
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 
 data class Main(
-    val temp: String?,
-    val feels_like: String?,
-    val temp_min: String?,
-    val temp_max: String?,
-    val pressure: String?,
-    val humidity: String?,
+    @SerializedName("temp") val temp: String?,
+    @SerializedName("feels_like") val feels_like: String?,
+    @SerializedName("temp_min") val temp_min: String?,
+    @SerializedName("temp_max") val temp_max: String?,
+    @SerializedName("pressure") val pressure: String?,
+    @SerializedName("humidity") val humidity: String?
 ): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),

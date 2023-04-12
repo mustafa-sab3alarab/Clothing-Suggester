@@ -2,23 +2,24 @@ package com.example.clothingsuggester.model.domain
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import java.util.ArrayList
 
 data class WeatherMap(
-    val coord: Coord?,
-    val weather: ArrayList<Weather>?,
-    val base: String?,
-    val main: Main?,
-    val visibility: String?,
-    val wind: Wind?,
-    val rain: Rain?,
-    val clouds: Clouds?,
-    val dt: String?,
-    val sys: Sys?,
-    val timezone: String?,
-    val id: String?,
-    val name: String?,
-    val cod: String?
+    @SerializedName("coord") val coord: Coord?,
+    @SerializedName("weather") val weather: ArrayList<Weather>?,
+    @SerializedName("base") val base: String?,
+    @SerializedName("main") val main: Main?,
+    @SerializedName("visibility") val visibility: String?,
+    @SerializedName("wind") val wind: Wind?,
+    @SerializedName("rain") val rain: Rain?,
+    @SerializedName("clouds") val clouds: Clouds?,
+    @SerializedName("dt") val dt: String?,
+    @SerializedName("sys") val sys: Sys?,
+    @SerializedName("timezone") val timezone: String?,
+    @SerializedName("id") val id: String?,
+    @SerializedName("name") val name: String?,
+    @SerializedName("cod") val cod: String?
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readParcelable(Coord::class.java.classLoader),

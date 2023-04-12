@@ -2,10 +2,11 @@ package com.example.clothingsuggester.model.domain
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 
 data class Coord(
-    val lon: String?,
-    val lat: String?
+    @SerializedName("lon") val lon: String?,
+    @SerializedName("lat") val lat: String?
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),

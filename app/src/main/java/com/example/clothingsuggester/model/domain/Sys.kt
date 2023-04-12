@@ -2,13 +2,14 @@ package com.example.clothingsuggester.model.domain
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 
 data class Sys(
-    val type : String?,
-    val id : String?,
-    val country : String?,
-    val sunrise : String?,
-    val sunset : String?
+    @SerializedName("type") val type : String?,
+    @SerializedName("id") val id : String?,
+    @SerializedName("country") val country : String?,
+    @SerializedName("sunrise") val sunrise : String?,
+    @SerializedName("sunset") val sunset : String?
 ): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),

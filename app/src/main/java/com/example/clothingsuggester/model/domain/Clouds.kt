@@ -2,9 +2,10 @@ package com.example.clothingsuggester.model.domain
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 
 data class Clouds(
-    val all: String?
+    @SerializedName("all") val all: String?
 ): Parcelable {
     constructor(parcel: Parcel) : this(parcel.readString())
 

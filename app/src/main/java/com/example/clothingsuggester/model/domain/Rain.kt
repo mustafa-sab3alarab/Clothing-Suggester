@@ -2,9 +2,10 @@ package com.example.clothingsuggester.model.domain
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 
 data class Rain(
-    val oneHour: String?
+    @SerializedName("1h") val oneHour: String?
 ) : Parcelable {
     constructor(parcel: Parcel) : this(parcel.readString())
 
