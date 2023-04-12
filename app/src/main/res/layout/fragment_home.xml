@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/motion_layout_home"
     android:background="@color/background"
     app:layoutDescription="@xml/fragment_home_scene"
     tools:context=".ui.MainActivity">
@@ -13,7 +14,7 @@
         android:layout_width="@dimen/big_image_size"
         android:layout_height="@dimen/big_image_size"
         android:layout_marginEnd="@dimen/spacing_medium"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         tools:srcCompat="@drawable/ic_wind" />
 
