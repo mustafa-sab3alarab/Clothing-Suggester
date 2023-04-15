@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
+import com.example.clothingsuggester.util.SharedPreferences.initPreferences
 
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
 
@@ -18,6 +19,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = bindingInflater(layoutInflater)
         setContentView(binding.root)
+        initPreferences(this)
     }
 
     protected fun log(value: String) {

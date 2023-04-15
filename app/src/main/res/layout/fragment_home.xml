@@ -202,7 +202,7 @@
         android:backgroundTint="@color/secondary"
         android:fontFamily="@font/rubik_medium"
         android:padding="@dimen/padding_medium"
-        android:text="@string/get_dressed"
+        android:text="@string/get_wear"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="@dimen/font_size_body"
