@@ -1,10 +1,15 @@
 package com.example.clothingsuggester.model
 
 
+import com.example.clothingsuggester.model.domain.WeatherMap
 import com.google.android.gms.maps.model.LatLng
-import okhttp3.Call
 
 interface ApiService {
 
-    fun getWeatherMap(latLng: LatLng) : Call
+    fun getWeatherMap(
+        latLng: LatLng,
+        onSuccess: (response: WeatherMap) -> Unit,
+        onFailure: (message: String?) -> Unit
+    )
+
 }
