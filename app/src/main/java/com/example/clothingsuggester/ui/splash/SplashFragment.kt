@@ -76,6 +76,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(), ISplashView {
                 internetConnectionDialog.show()
             } else {
                 internetConnectionDialog.dismiss()
+                fetchCurrentLocation()
             }
         }
 
@@ -94,11 +95,11 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(), ISplashView {
         locationPermissionDialog.show()
     }
 
-    override fun onSuccessWeather(weatherMap: WeatherMap) {
+    override fun navigateToHome(weatherMap: WeatherMap) {
         navigateToFragment(HomeFragment.newInstance(weatherMap))
     }
 
-    override fun onFailureWeather(error: String) {
+    override fun showSnackbarError(error: String) {
         log(error)
     }
 
