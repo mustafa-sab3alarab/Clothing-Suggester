@@ -1,29 +1,10 @@
 package com.example.clothingsuggester.model.domain
 
-import android.os.Parcel
 import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import com.google.gson.annotations.SerializedName
 
+@Parcelize
 data class Clouds(
     @SerializedName("all") val all: String?
-): Parcelable {
-    constructor(parcel: Parcel) : this(parcel.readString())
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(all)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<Clouds> {
-        override fun createFromParcel(parcel: Parcel): Clouds {
-            return Clouds(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Clouds?> {
-            return arrayOfNulls(size)
-        }
-    }
-}
+) : Parcelable
