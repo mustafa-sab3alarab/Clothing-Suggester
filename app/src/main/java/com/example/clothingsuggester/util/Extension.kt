@@ -23,5 +23,6 @@ fun getCurrentDay(): String {
 
 fun getNextDay(): String {
     val calendar = Calendar.getInstance()
-    return calendar.add(Calendar.DAY_OF_YEAR, 1).toString()
+    calendar.add(Calendar.DAY_OF_MONTH, 1)
+    return calendar.get(Calendar.DAY_OF_MONTH).toString()
 }
