@@ -21,6 +21,7 @@ import com.example.clothingsuggester.util.Dialog
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.material.snackbar.Snackbar
 
 
 class SplashFragment : BaseFragment<FragmentSplashBinding>(), ISplashView {
@@ -100,7 +101,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(), ISplashView {
     }
 
     override fun showSnackbarError(error: String) {
-        log(error)
+        Snackbar.make(binding.root, "Please try again", Snackbar.LENGTH_LONG).show()
     }
 
     private fun navigateToFragment(fragment: Fragment) {
