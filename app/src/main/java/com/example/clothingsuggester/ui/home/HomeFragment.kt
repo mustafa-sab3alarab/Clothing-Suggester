@@ -9,7 +9,6 @@ import com.example.clothingsuggester.R
 import com.example.clothingsuggester.databinding.FragmentHomeBinding
 import com.example.clothingsuggester.model.domain.WeatherMap
 import com.example.clothingsuggester.ui.base.BaseFragment
-import com.example.clothingsuggester.util.DataManger
 import com.example.clothingsuggester.util.loadImage
 import com.example.clothingsuggester.util.toCelsius
 import com.example.clothingsuggester.util.toKmPerHour
@@ -24,6 +23,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), IHomeView {
         get() = FragmentHomeBinding::inflate
 
     private val homePresenter by lazy { HomePresenter(this) }
+    private val getWear by lazy { GetWear() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         bindWeatherData()
@@ -33,26 +33,47 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), IHomeView {
     private fun bindWeatherData() {
         val weatherMap = arguments?.getParcelable(WEATHER_MAP) as WeatherMap?
 
+        val countryName = "${weatherMap?.name ?: "-"}, ${weatherMap?.sys?.country ?: "-"}"
+        val temperature = "${weatherMap?.main?.temp?.toCelsius() ?: ""}°C"
         val iconId = weatherMap?.weather?.get(0)?.icon
-        val iconUrl = homePresenter.getCurrentWeatherIconUrl(iconId)
+        val highTemperature = "H:${weatherMap?.main?.temp_max?.toCelsius() ?: "0"}° "
+        val lowTemperature = "L:${weatherMap?.main?.temp_min?.toCelsius() ?: "0"}° | "
+        val feelsLike = "Feels like ${weatherMap?.main?.feels_like?.toCelsius() ?: "0"}°"
+        val highLowTemperature = highTemperature + lowTemperature + feelsLike
+        val humidity = "${weatherMap?.main?.humidity ?: "0"}%"
+        val wind = "${weatherMap?.wind?.speed?.toKmPerHour() ?: "0"} km/h"
+        val rain = "${weatherMap?.rain?.oneHour ?: "0"} mm"
+
+        homePresenter.getCurrentWeatherIconUrl(iconId)
 
         binding.apply {
-            textViewCountryName.text = "${weatherMap?.name}, ${weatherMap?.sys?.country}"
-            textViewTemperature.text = "${weatherMap?.main?.temp?.toCelsius()}°C"
-            textViewHighLow.text =
-                "H:${weatherMap?.main?.temp_max?.toCelsius()}° L:${weatherMap?.main?.temp_min?.toCelsius()}° | Feels like ${weatherMap?.main?.feels_like?.toCelsius()}°"
-            textViewHumidityValue.text = "${weatherMap?.main?.humidity}%"
-            textViewWindValue.text = "${weatherMap?.wind?.speed?.toKmPerHour()} km/h"
-            textViewRainValue.text = "${weatherMap?.rain?.oneHour ?: "0"} mm"
-            imageViewTemperature.loadImage(iconUrl)
+            textViewCountryName.text = countryName
+            textViewTemperature.text = temperature
+            textViewHighLow.text = highLowTemperature
+            textViewHumidityValue.text = humidity
+            textViewWindValue.text = wind
+            textViewRainValue.text = rain
         }
 
     }
 
     private fun getSuggestionWear() {
         binding.buttonGetDressed.setOnClickListener {
+
             binding.motionLayoutHome.transitionToState(R.id.start)
-            binding.imageViewSuggestionForYou.setImageDrawable(AppCompatResources.getDrawable(requireContext(),DataManger.getWearImage().values.first()[0].image))
+
+            val weatherMap = arguments?.getParcelable(WEATHER_MAP) as WeatherMap?
+            val temperature = weatherMap?.main?.temp?.toCelsius()
+
+            binding.imageViewSuggestionForYou.setImageDrawable(
+                getWear.suggestWearForToday(temperature)?.let { imageId ->
+                    AppCompatResources.getDrawable(
+                        requireContext(),
+                        imageId
+                    )
+                }
+            )
+
             binding.motionLayoutHome.transitionToState(R.id.end)
         }
     }
@@ -66,6 +87,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), IHomeView {
                     putParcelable(WEATHER_MAP, weatherMap)
                 }
             }
+    }
+
+    override fun setWeatherImage(imageUrl: String?) {
+        imageUrl?.let {
+            binding.imageViewTemperature.loadImage(it)
+        }
     }
 
 }
