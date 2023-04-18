@@ -10,6 +10,7 @@ object SharedPreferences {
 
     private const val SHARED_PREF = "clothes_prefs"
     private const val LATEST_CLOTHE = "latest_clothe"
+    private const val DATE = "date"
 
     fun initPreferences(context: Context) {
         sharedPreferences = context.getSharedPreferences(SHARED_PREF, Context.MODE_PRIVATE)
@@ -19,5 +20,11 @@ object SharedPreferences {
         get() = sharedPreferences.getString(LATEST_CLOTHE, null)
         set(value) {
             sharedPreferences.edit().putString(LATEST_CLOTHE, value).apply()
+        }
+
+    var date: String?
+        get() = sharedPreferences.getString(DATE, null)
+        set(value) {
+            sharedPreferences.edit().putString(DATE, value).apply()
         }
 }
