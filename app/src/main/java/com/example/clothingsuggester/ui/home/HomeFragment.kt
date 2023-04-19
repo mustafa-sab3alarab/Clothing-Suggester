@@ -23,7 +23,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), IHomeView {
         get() = FragmentHomeBinding::inflate
 
     private val homePresenter by lazy { HomePresenter(this) }
-    private val getWear by lazy { GetWear() }
+    private val wearSuggestion by lazy { WearSuggestion() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         bindWeatherData()
@@ -66,7 +66,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(), IHomeView {
             val temperature = weatherMap?.main?.temp?.toCelsius()
 
             binding.imageViewSuggestionForYou.setImageDrawable(
-                getWear.suggestWearForToday(temperature)?.let { imageId ->
+                wearSuggestion.suggestWearForToday(temperature)?.let { imageId ->
                     AppCompatResources.getDrawable(
                         requireContext(),
                         imageId
