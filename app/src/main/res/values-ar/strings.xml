@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">اقتراح الملابس</string>
+    <string name="get_wear">احصل على ارتداء</string>
+    <string name="suggestion_for_you">اقتراح لك</string>
+    <string name="rain">هطول الأمطار</string>
+    <string name="humidity">رطوبة</string>
+    <string name="wind">رياح</string>
+    <string name="grant_permission">يعطي الأذن</string>
+    <string name="requires_location">يتطلب هذا التطبيق إذن الموقع.</string>
+    <string name="location_permission">مطلوب إذن الموقع</string>
+    <string name="internet_title">هناك خطأ ما</string>
+    <string name="internet_description">تحقق من اتصالك بالإنترنت وحاول مرة أخرى</string>
+    <string name="internet_button">أعد المحاولة</string>
+</resources>
