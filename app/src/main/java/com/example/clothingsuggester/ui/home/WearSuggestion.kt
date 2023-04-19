@@ -56,11 +56,11 @@ class WearSuggestion {
             SharedPreferences.latestClothe = newClothe.toString()
             newClothe
         } else {
-            val notWorn = clothesByTemperature?.find {
+            val unWorn = clothesByTemperature?.find {
                 it.imageId != latestWear.toIntOrNull()
             }?.imageId
-            SharedPreferences.latestClothe = notWorn.toString()
-            notWorn
+            SharedPreferences.latestClothe = unWorn.toString()
+            unWorn
         }
     }
 }
