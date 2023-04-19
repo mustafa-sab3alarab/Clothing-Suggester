@@ -3,8 +3,6 @@ package com.example.clothingsuggester.ui.home
 import com.example.clothingsuggester.R
 import com.example.clothingsuggester.model.domain.Clothe
 import com.example.clothingsuggester.util.SharedPreferences
-import com.example.clothingsuggester.util.getCurrentDay
-import com.example.clothingsuggester.util.getNextDay
 
 class WearSuggestion {
 
@@ -52,23 +50,17 @@ class WearSuggestion {
         val clothesByTemperature: List<Clothe>? = clothes[temperature]
 
         val latestWear = SharedPreferences.latestClothe
-        val currentDate = getCurrentDay()
 
-        SharedPreferences.date = getNextDay()
-
-        if (SharedPreferences.date != currentDate) {
-            SharedPreferences.date = getNextDay()
-        }
-
-        return if (!latestWear.isNullOrEmpty() && SharedPreferences.date == currentDate) {
-            clothesByTemperature?.find {
-                it.imageId == latestWear.toIntOrNull()
-            }?.imageId
-        } else {
-            val newClothe = clothesByTemperature?.shuffled()?.first()?.imageId
+        return if (latestWear.isNullOrEmpty()) {
+            val newClothe = clothesByTemperature?.random()?.imageId
             SharedPreferences.latestClothe = newClothe.toString()
-            SharedPreferences.date = currentDate
             newClothe
+        } else {
+            val notWorn = clothesByTemperature?.find {
+                it.imageId != latestWear.toIntOrNull()
+            }?.imageId
+            SharedPreferences.latestClothe = notWorn.toString()
+            notWorn
         }
     }
 }
