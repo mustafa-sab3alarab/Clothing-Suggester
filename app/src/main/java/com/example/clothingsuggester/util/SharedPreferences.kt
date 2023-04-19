@@ -21,10 +21,4 @@ object SharedPreferences {
         set(value) {
             sharedPreferences.edit().putString(LATEST_CLOTHE, value).apply()
         }
-
-    var date: String?
-        get() = sharedPreferences.getString(DATE, null)
-        set(value) {
-            sharedPreferences.edit().putString(DATE, value).apply()
-        }
 }
