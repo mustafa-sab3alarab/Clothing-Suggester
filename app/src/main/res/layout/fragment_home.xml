@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/motion_layout_home"
+    android:background="@color/background"
+    app:layoutDescription="@xml/fragment_home_scene"
+    tools:context=".ui.MainActivity">
+
+    <ImageView
+        android:id="@+id/image_view_temperature"
+        android:layout_width="@dimen/big_image_size"
+        android:layout_height="@dimen/big_image_size"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        app:layout_constraintEnd_toEndOf="@id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        tools:srcCompat="@drawable/ic_wind" />
+
+    <FrameLayout
+        android:id="@+id/view_card_details"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/card_details_height"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:background="@drawable/background_weather_status"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/image_view_temperature" />
+
+    <TextView
+        android:id="@+id/text_view_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik_medium"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_size_title_x_large"
+        app:layout_constraintEnd_toStartOf="@+id/image_view_temperature"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        tools:text="18°C" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="24dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="@dimen/spacing_medium" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/spacing_medium" />
+
+    <TextView
+        android:id="@+id/text_view_country_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik_medium"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_size_title"
+        app:layout_constraintEnd_toStartOf="@+id/image_view_temperature"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_temperature"
+        tools:text="DenHaag, Netherland" />
+
+    <ImageView
+        android:id="@+id/image_view_humidity"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        app:layout_constraintEnd_toStartOf="@+id/image_view_rain"
+        app:layout_constraintStart_toEndOf="@+id/image_view_wind"
+        app:layout_constraintTop_toTopOf="@+id/image_view_wind"
+        app:srcCompat="@drawable/ic_humidity" />
+
+    <ImageView
+        android:id="@+id/image_view_wind"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_marginStart="@dimen/spacing_x_large"
+        android:layout_marginTop="@dimen/spacing_medium"
+        app:layout_constraintEnd_toStartOf="@+id/image_view_humidity"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/view_card_details"
+        app:srcCompat="@drawable/ic_wind" />
+
+    <ImageView
+        android:id="@+id/image_view_rain"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
+        android:layout_marginEnd="@dimen/spacing_x_large"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toEndOf="@+id/image_view_humidity"
+        app:layout_constraintTop_toTopOf="@+id/image_view_humidity"
+        app:srcCompat="@drawable/ic_rain" />
+
+    <TextView
+        android:id="@+id/text_view_wind_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:fontFamily="@font/rubik"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_size_body"
+        app:layout_constraintEnd_toEndOf="@+id/image_view_wind"
+        app:layout_constraintStart_toStartOf="@+id/image_view_wind"
+        app:layout_constraintTop_toBottomOf="@+id/image_view_wind"
+        tools:text="10 m/s" />
+
+    <TextView
+        android:id="@+id/text_view_wind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:fontFamily="@font/rubik"
+        android:text="@string/wind"
+        android:textColor="@color/tertiary_38"
+        android:textSize="@dimen/font_size_body"
+        app:layout_constraintBottom_toBottomOf="@+id/view_card_details"
+        app:layout_constraintEnd_toEndOf="@+id/text_view_wind_value"
+        app:layout_constraintStart_toStartOf="@+id/text_view_wind_value"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_wind_value" />
+
+    <TextView
+        android:id="@+id/text_view_humidity_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_size_body"
+        app:layout_constraintBaseline_toBaselineOf="@+id/text_view_wind_value"
+        app:layout_constraintEnd_toEndOf="@+id/image_view_humidity"
+        app:layout_constraintStart_toStartOf="@+id/image_view_humidity"
+        tools:text="98%" />
+
+    <TextView
+        android:id="@+id/text_view_humidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik"
+        android:text="@string/humidity"
+        android:textColor="@color/tertiary_38"
+        android:textSize="@dimen/font_size_body"
+        app:layout_constraintBaseline_toBaselineOf="@+id/text_view_wind"
+        app:layout_constraintEnd_toEndOf="@+id/text_view_humidity_value"
+        app:layout_constraintStart_toStartOf="@+id/text_view_humidity_value" />
+
+    <TextView
+        android:id="@+id/text_view_rain_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_size_body"
+        app:layout_constraintBaseline_toBaselineOf="@+id/text_view_humidity_value"
+        app:layout_constraintEnd_toEndOf="@+id/image_view_rain"
+        app:layout_constraintStart_toStartOf="@+id/image_view_rain"
+        tools:text="2 mm" />
+
+    <TextView
+        android:id="@+id/text_view_rain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/rubik"
+        android:text="@string/rain"
+        android:textColor="@color/tertiary_38"
+        android:textSize="@dimen/font_size_body"
+        app:layout_constraintBaseline_toBaselineOf="@+id/text_view_humidity"
+        app:layout_constraintEnd_toEndOf="@+id/text_view_rain_value"
+        app:layout_constraintStart_toStartOf="@+id/text_view_rain_value" />
+
+    <TextView
+        android:id="@+id/text_view_suggestion_for_you"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:fontFamily="@font/rubik_medium"
+        android:text="@string/suggestion_for_you"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_size_title"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/view_card_details" />
+
+    <Button
+        android:id="@+id/button_get_dressed"
+        style="@style/Widget.Material3.Button.ElevatedButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:backgroundTint="@color/secondary"
+        android:fontFamily="@font/rubik_medium"
+        android:padding="@dimen/padding_medium"
+        android:text="@string/get_wear"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_size_body"
+        app:icon="@drawable/ic_hanger"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/image_view_suggestion_for_you" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image_view_suggestion_for_you"
+        android:layout_width="0dp"
+        android:scaleType="centerCrop"
+        android:layout_height="@dimen/suggestion_image_height"
+        android:layout_marginTop="@dimen/spacing_medium"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Large"
+        android:background="@drawable/background_suggestion_image"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_suggestion_for_you" />
+
+    <TextView
+        android:id="@+id/text_view_high_low"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:fontFamily="@font/rubik"
+        android:textAlignment="center"
+        android:textColor="@color/tertiary_38"
+        android:textSize="@dimen/font_size_title"
+        app:layout_constraintEnd_toEndOf="@+id/text_view_country_name"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_country_name"
+        tools:text="H:24° L:18° Feels like 14°" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>
